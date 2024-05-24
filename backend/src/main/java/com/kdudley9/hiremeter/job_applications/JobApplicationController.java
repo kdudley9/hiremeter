@@ -41,7 +41,7 @@ public class JobApplicationController {
                    jobApplication.setPayRate(updateJobApplication.getPayRate());
                    jobApplication.setRole(updateJobApplication.getRole());
                    jobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
-                   jobApplication.setReceivedOffer(updateJobApplication.hasReceivedOffer());
+                   jobApplication.setReceivedOffer(updateJobApplication.isReceivedOffer());
                    return new ResponseEntity<>(jobApplicationRepository.save(updateJobApplication), HttpStatus.OK);
                 })
                 .orElseGet(() -> {
@@ -51,13 +51,11 @@ public class JobApplicationController {
     }
 
     @DeleteMapping
-    @ResponseStatus(HttpStatus.OK)
     public void deleteJobApplications() {
         jobApplicationRepository.deleteAll();
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.OK)
     public void deleteJobApplication(@PathVariable Long id) {
         jobApplicationRepository.deleteById(id);
     }

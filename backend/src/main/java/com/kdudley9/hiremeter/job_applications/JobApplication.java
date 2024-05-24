@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.NotBlank;
 
-@Entity(name = "applications")
+@Entity(name = "job_applications")
 public class JobApplication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,9 @@ public class JobApplication {
     @NotBlank(message = "Application date cannot be blank")
     @Column(name = "application_date")
     private String applicationDate;
-    @NotBlank(message = "Application response cannot be blank")
     @Enumerated(EnumType.STRING)
     @Column(name = "application_response")
     private JobApplicationResponse applicationResponse;
-    @NotBlank(message = "Interview stage cannot be blank")
     @Enumerated(EnumType.STRING)
     @Column(name = "interview_stage")
     private InterviewStage interviewStage;
@@ -108,7 +106,7 @@ public class JobApplication {
         this.interviewStage = interviewStage;
     }
 
-    public boolean hasReceivedOffer() {
+    public boolean isReceivedOffer() {
         return receivedOffer;
     }
 
