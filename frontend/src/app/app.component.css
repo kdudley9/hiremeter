@@ -1,0 +1,35 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.summary {
+    min-height: 512px;
+    height: 512px;
+    min-width: 600px;
+    width: 600px;
+    margin-left: 100px;
+    margin-bottom: 48px;
+}
+
+img {
+    height: 350px;
+    width: 600px;
+    margin-top: 150px;
+    margin-right: 100px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px 5px #9B9B9B;
+}
+
+.login-btn {
+    display: block;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1A8FE3;
+    padding: 10px 35px 10px 35px;
+    color: #f2f2f2;
+    margin-left: 100px;
+    cursor: pointer;
+}
