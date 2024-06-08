@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IJobApplication } from '../models/IJobApplication';
+import { JobApplication } from '../models/JobApplication';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,11 @@ export class JobApplicationsService {
 
   constructor(private http: HttpClient) { }
 
-  getJobApplications(): Observable<IJobApplication[]> {
-    return this.http.get<IJobApplication[]>(`${this.baseUrl}`);
+  getJobApplications(): Observable<JobApplication[]> {
+    return this.http.get<JobApplication[]>(`${this.baseUrl}`);
   }
 
-  getJobApplication(id: number): Observable<IJobApplication> {
-    return this.http.get<IJobApplication>(`${this.baseUrl}/${id}`);
+  getJobApplication(id: number): Observable<JobApplication> {
+    return this.http.get<JobApplication>(`${this.baseUrl}/${id}`);
   }
 }

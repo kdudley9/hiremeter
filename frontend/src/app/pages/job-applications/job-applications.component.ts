@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IJobApplication } from '../../models/IJobApplication'
+import { JobApplication } from '../../models/JobApplication'
 import { JobApplicationsService } from '../../services/job-applications.service';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './job-applications.component.css'
 })
 export class JobApplicationsComponent implements OnInit {
-  jobApplications: IJobApplication[];
+  jobApplications: JobApplication[];
 
   constructor(private jobApplicationsService: JobApplicationsService) {
     this.jobApplications = [];

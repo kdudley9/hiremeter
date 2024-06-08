@@ -1,4 +1,4 @@
-export interface IJobApplication {
+export interface JobApplication {
     company: string;
     role: string;
     payRate: number;
