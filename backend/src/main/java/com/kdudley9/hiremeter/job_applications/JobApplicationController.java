@@ -30,7 +30,7 @@ public class JobApplicationController {
         return new ResponseEntity<>(jobApplicationRepository.save(jobApplication), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public ResponseEntity<JobApplication> updateJobApplication(@RequestBody JobApplication updateJobApplication, @PathVariable Long id) {
         return jobApplicationRepository.findById(id)
                 .map(jobApplication -> {
@@ -38,11 +38,10 @@ public class JobApplicationController {
                    jobApplication.setApplicationResponse(updateJobApplication.getApplicationResponse());
                    jobApplication.setCompany(updateJobApplication.getCompany());
                    jobApplication.setLinkToJobPost(updateJobApplication.getLinkToJobPost());
-                   jobApplication.setPayRate(updateJobApplication.getPayRate());
                    jobApplication.setRole(updateJobApplication.getRole());
                    jobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
                    jobApplication.setReceivedOffer(updateJobApplication.isReceivedOffer());
-                   return new ResponseEntity<>(jobApplicationRepository.save(updateJobApplication), HttpStatus.OK);
+                   return new ResponseEntity<>(jobApplicationRepository.save(jobApplication), HttpStatus.OK);
                 })
                 .orElseGet(() -> {
                    updateJobApplication.setApplicationId(id);
