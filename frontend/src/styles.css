@@ -1,14 +1,12 @@
 @font-face {
-    font-family: 'Poppins';
-    src: url('/assets/fonts/Poppins-Regular.ttf');
+  font-family: "Poppins";
+  src: url("/assets/fonts/Poppins-Regular.ttf");
 }
 
 html,
 body {
-    font-family: 'Poppins';
-    font-size: 28px;
-    margin: 0;
-    background-color: #f2f2f2;
+  font-family: "Poppins";
+  font-size: 28px;
+  margin: 0;
+  background-color: #f2f2f2;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

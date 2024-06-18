@@ -5,7 +5,7 @@
   <div class="table-header">
     <h1 class="applications-header">Applications</h1>
     <div class="btn-wrapper">
-      <button class="delete-btn">Delete</button>
+      <button class="delete-btn">Delete All</button>
       <button class="add-btn">+ Add</button>
     </div>
   </div>
@@ -13,24 +13,40 @@
     <table class="applications-table">
       <thead>
         <tr>
+          <th>Job Post</th>
           <th>Company</th>
           <th>Role</th>
-          <th>Pay</th>
           <th>Response</th>
           <th>Interview Stage</th>
           <th>Offer</th>
           <th>Date</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor='let application of jobApplications'>
+          <td>
+            <button mat-icon-button (click)="navigateToJobPost(application.linkToJobPost)">
+              <mat-icon color="primary">open_in_new</mat-icon>
+            </button>
+          </td>
           <td>{{ application.company }}</td>
           <td>{{ application.role }}</td>
-          <td>{{ application.payRate }}</td>
           <td>{{ application.applicationResponse }}</td>
           <td>{{ application.interviewStage }}</td>
           <td>{{ application.receivedOffer }}</td>
           <td>{{ application.applicationDate }}</td>
+          <td>
+            <button mat-icon-button>
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+          </td>
+          <td>
+            <button mat-icon-button (click)="deleteJobApplication(application.applicationId)">
+              <mat-icon color="warn">delete</mat-icon>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
