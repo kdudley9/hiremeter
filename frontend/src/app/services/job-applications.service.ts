@@ -7,15 +7,31 @@ import { JobApplication } from '../models/JobApplication';
   providedIn: 'root'
 })
 export class JobApplicationsService {
-  readonly baseUrl = 'http://localhost:3000/job-applications';
+  readonly baseUrl = '/api/v1/job-applications';
 
   constructor(private http: HttpClient) { }
 
-  getJobApplications(): Observable<JobApplication[]> {
+  addJobApplication(jobApplication: JobApplication): Observable<JobApplication> {
+    return this.http.post<JobApplication>(`${this.baseUrl}`, jobApplication);
+  }
+
+  updateJobApplication(jobApplication: JobApplication, id: number): Observable<JobApplication> {
+    return this.http.put<JobApplication>(`${this.baseUrl}/${id}`, jobApplication);
+  }
+
+  getAllJobApplications(): Observable<JobApplication[]> {
     return this.http.get<JobApplication[]>(`${this.baseUrl}`);
   }
 
   getJobApplication(id: number): Observable<JobApplication> {
     return this.http.get<JobApplication>(`${this.baseUrl}/${id}`);
+  }
+
+  deleteJobApplication(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  deleteAllJobApplications(): Observable<any> {
+    return this.http.delete(`${this.baseUrl}`);
   }
 }
