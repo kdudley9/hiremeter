@@ -1,83 +1,86 @@
 .container {
-    margin-left: 225px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+  margin-left: 225px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .search-header {
-    height: 85px;
-    border-bottom: 1px solid #e0e0e0;
+  height: 85px;
+  border-bottom: 1px solid #e0e0e0;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .table-header {
-    font-size: 25px;
-    display: flex;
-    justify-content: space-between;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .table-header h1 {
-    margin-left: 30px;
+  font-size: 35px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 .btn-wrapper {
-    margin-top: 50px;
-    margin-right: 15px;
-    height: 50%;
+  margin-top: 50px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  height: 50%;
 }
 
 button {
-    border: 0;
-    border-radius: 17px;
-    color: #f2f2f2;
-    padding: 10px 25px 10px 25px;
-    margin-right: 15px;
-    cursor: pointer;
+  border: 0;
+  border-radius: 17px;
+  color: #f2f2f2;
+  padding: 10px 25px 10px 25px;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 .delete-btn {
-    background-color: #C42021;
+  background-color: #C42021;
 }
 
 .add-btn {
-    background-color: #1A8FE3;
+  background-color: #1A8FE3;
 }
 
 .search-bar {
-    width: 20%;
-    background-color: #d9d9d9;
-    border: 0;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-left: 25px;
-    margin-bottom: 25px;
-    padding: 5px 15px 5px 15px;
+  width: 20%;
+  background-color: #d9d9d9;
+  border: 0;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  padding: 5px 15px 5px 15px;
 }
 
 .applications-table-wrapper {
-    flex-grow: 1;
-    overflow: auto;
-    scrollbar-color: #1A8FE3 #e0e0e0;
-    scrollbar-width: thin;
-    margin-left: 15px;
-    margin-right: 15px;
+  flex-grow: 1;
+  overflow: auto;
+  scrollbar-color: #1A8FE3 #e0e0e0;
+  scrollbar-width: thin;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .applications-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
 }
 
 .applications-table th,
 .applications-table td {
-    padding: 5px 10px;
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: left;
+  padding: 5px 10px;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
 }

@@ -4,13 +4,25 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { LayoutComponent } from './pages/layout/layout.component';
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'applications',
+        component: JobApplicationsComponent,
+        title: 'Applications - Hiremeter'
+      },
+      {
         path: '',
-        component: LayoutComponent,
-        children: [
-            { path: 'applications', component: JobApplicationsComponent, title: 'Applications - Hiremeter' },
-            { path: '', redirectTo: '/home', pathMatch: 'full' }
-        ]
-    },
-    { path: 'home', component: LandingPageComponent, title: 'Home - Hiremeter' },
+        redirectTo: '/home',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: 'home',
+    component: LandingPageComponent,
+    title: 'Home - Hiremeter'
+  },
 ];
