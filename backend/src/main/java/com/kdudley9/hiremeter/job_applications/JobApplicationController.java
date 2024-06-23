@@ -43,7 +43,7 @@ public class JobApplicationController {
                    existingJobApplication.setLinkToJobPost(updateJobApplication.getLinkToJobPost());
                    existingJobApplication.setRole(updateJobApplication.getRole());
                    existingJobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
-                   existingJobApplication.setReceivedOffer(updateJobApplication.isReceivedOffer());
+                   existingJobApplication.setOfferStatus(updateJobApplication.getOfferStatus());
                    return new ResponseEntity<>(jobApplicationRepository.save(existingJobApplication), HttpStatus.OK);
                 })
                 .orElseGet(() -> {
@@ -62,6 +62,10 @@ public class JobApplicationController {
 
                     if (updateJobApplication.getInterviewStage() != null) {
                         existingJobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
+                    }
+
+                    if (updateJobApplication.getOfferStatus() != null) {
+                        existingJobApplication.setOfferStatus(updateJobApplication.getOfferStatus());
                     }
                     return new ResponseEntity<>(jobApplicationRepository.save(existingJobApplication), HttpStatus.OK);
                 })

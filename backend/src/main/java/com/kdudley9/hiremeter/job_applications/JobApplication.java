@@ -2,6 +2,7 @@ package com.kdudley9.hiremeter.job_applications;
 
 import com.kdudley9.hiremeter.job_applications.enums.JobApplicationResponse;
 import com.kdudley9.hiremeter.job_applications.enums.InterviewStage;
+import com.kdudley9.hiremeter.job_applications.enums.OfferStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.NotBlank;
@@ -33,12 +34,14 @@ public class JobApplication {
     @Enumerated(EnumType.STRING)
     @Column(name = "interview_stage")
     private InterviewStage interviewStage;
-    @Column(name = "received_offer")
-    private boolean receivedOffer;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "offer_status")
+    private OfferStatus offerStatus;
 
     public JobApplication() {
         this.applicationResponse = JobApplicationResponse.NO_RESPONSE;
         this.interviewStage = InterviewStage.NO_INTERVIEW;
+        this.offerStatus = OfferStatus.NO;
     }
 
     public long getApplicationId() {
@@ -97,11 +100,11 @@ public class JobApplication {
         this.interviewStage = interviewStage;
     }
 
-    public boolean isReceivedOffer() {
-        return receivedOffer;
+    public OfferStatus getOfferStatus() {
+        return offerStatus;
     }
 
-    public void setReceivedOffer(boolean receivedOffer) {
-        this.receivedOffer = receivedOffer;
+    public void setOfferStatus(OfferStatus offerStatus) {
+        this.offerStatus = offerStatus;
     }
 }
