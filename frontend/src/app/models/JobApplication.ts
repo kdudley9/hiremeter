@@ -6,5 +6,5 @@ export interface JobApplication {
   applicationDate: string;
   applicationResponse: string;
   interviewStage: string;
-  receivedOffer: boolean;
+  offerStatus: string;
 } 

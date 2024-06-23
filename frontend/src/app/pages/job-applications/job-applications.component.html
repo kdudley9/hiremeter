@@ -24,7 +24,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="jobApplications$ | async as jobApplications; else loading">
         <tr *ngFor='let application of jobApplications'>
           <td>
             <button mat-icon-button (click)="navigateToJobPost(application.linkToJobPost)">
@@ -33,9 +33,29 @@
           </td>
           <td>{{ application.company }}</td>
           <td>{{ application.role }}</td>
-          <td>{{ application.applicationResponse }}</td>
-          <td>{{ application.interviewStage }}</td>
-          <td>{{ application.receivedOffer }}</td>
+          <td>
+            <select [(ngModel)]="application.applicationResponse"
+              (ngModelChange)="onResponseChange(application, $event)">
+              <option *ngFor="let response of applicationResponse | keyvalue" [value]="response.key">
+                {{ response.key.replace('_', ' ')}}
+              </option>
+            </select>
+          </td>
+          <td>
+            <select [(ngModel)]="application.interviewStage"
+              (ngModelChange)="onInterviewStageChange(application, $event)">
+              <option *ngFor="let stage of interviewStage | keyvalue" [value]="stage.key">
+                {{ stage.key.replace('_', ' ') }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <select [(ngModel)]="application.offerStatus" (ngModelChange)="onOfferStatusChange(application, $event)">
+              <option *ngFor="let status of offerStatus | keyvalue" [value]="status.key">
+                {{ status.key }}
+              </option>
+            </select>
+          </td>
           <td>{{ application.applicationDate }}</td>
           <td>
             <button mat-icon-button>
@@ -52,3 +72,4 @@
     </table>
   </div>
 </div>
+<ng-template #loading>loading...</ng-template>
