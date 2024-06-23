@@ -18,7 +18,7 @@ public class JobApplicationController {
 
     @GetMapping
     public ResponseEntity<List<JobApplication>> getJobApplications() {
-        return new ResponseEntity<>(jobApplicationRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(jobApplicationRepository.findAllByOrderByApplicationIdDesc(), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
