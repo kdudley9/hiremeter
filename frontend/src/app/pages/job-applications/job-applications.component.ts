@@ -4,6 +4,7 @@ import { JobApplicationsService } from '../../services/job-applications.service'
 import { CommonModule } from '@angular/common';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button'
+import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -21,7 +22,8 @@ import { OfferStatus } from '../../enums/OfferStatus';
     MatIconModule,
     MatButtonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   templateUrl: './job-applications.component.html',
   styleUrl: './job-applications.component.css',
@@ -53,6 +55,10 @@ export class JobApplicationsComponent implements OnInit {
 
   deleteJobApplication(id: number): void {
     this.jobApplicationsService.deleteJobApplication(id).subscribe();
+  }
+
+  deleteAllJobApplications(): void {
+    this.jobApplicationsService.deleteAllJobApplications().subscribe();
   }
 
   navigateToJobPost(url: string): void {

@@ -5,37 +5,36 @@
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  color: #373f51;
 }
 
 .search-header {
   height: 85px;
   border-bottom: 1px solid #e0e0e0;
-
   display: flex;
   align-items: center;
 }
 
 .table-header {
-  font-size: 25px;
   display: flex;
   justify-content: space-between;
 }
 
-.table-header h1 {
+.applications-header {
   font-size: 35px;
-  margin-top: 30px;
-  margin-left: 30px;
+  margin: 30px 50px 0 30px;
 }
 
 .btn-wrapper {
-  margin-top: 50px;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  font-size: 15px;
+  margin: 30px 15px 0 50px;
+  padding-top: 15px;
   height: 50%;
+  width: 250px;
+  min-width: 250px;
 }
 
 button {
-  border: 0;
   border-radius: 17px;
   color: #f2f2f2;
   padding: 10px 25px 10px 25px;
@@ -43,23 +42,13 @@ button {
   cursor: pointer;
 }
 
-.delete-btn {
-  background-color: #C42021;
-}
-
-.add-btn {
-  background-color: #1A8FE3;
-}
-
 .search-bar {
   width: 20%;
   background-color: #d9d9d9;
   border: 0;
   border-radius: 10px;
-  margin-top: 30px;
-  margin-left: 25px;
-  margin-bottom: 25px;
-  padding: 5px 15px 5px 15px;
+  margin: 30px 0 25px 25px;
+  padding: 7px 15px 7px 15px;
 }
 
 .applications-table-wrapper {
@@ -79,8 +68,35 @@ button {
 
 .applications-table th,
 .applications-table td {
-  padding: 5px 10px;
-  padding: 10px;
+  padding: 10px 15px;
   border-bottom: 1px solid #e0e0e0;
   text-align: left;
+}
+
+mat-option {
+  font-size: 15px;
+}
+
+#company-col {
+  width: 15%;
+}
+
+#role-col {
+  width: 15%;
+}
+
+#link-col {
+  width: 10%;
+}
+
+#offer-status-col {
+  width: 15%;
+}
+
+#edit-col {
+  width: 5%;
+}
+
+#delete-col {
+  width: 5%;
 }

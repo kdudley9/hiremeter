@@ -66,7 +66,8 @@ $frontend-theme: mat.define-light-theme((color: (primary: $frontend-primary,
         accent: $frontend-accent,
         warn: $frontend-warn,
       ),
-      typography: mat.define-typography-config(),
+      typography: (plain-family: 'Poppins'
+      ),
       density: 0));
 
 @include mat.all-component-themes($frontend-theme);
