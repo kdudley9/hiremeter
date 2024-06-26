@@ -2,9 +2,11 @@ package com.kdudley9.hiremeter.job_applications;
 
 import com.kdudley9.hiremeter.job_applications.enums.JobApplicationResponse;
 import com.kdudley9.hiremeter.job_applications.enums.InterviewStage;
+import com.kdudley9.hiremeter.job_applications.enums.OfferStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 @Entity(name = "job_applications")
 public class JobApplication {
@@ -19,13 +21,9 @@ public class JobApplication {
     @NotBlank(message = "Role cannot be blank")
     @Size(max = 75, message = "Role cannot exceed 75 characters")
     private String role;
-    @Min(value = 0, message = "Pay Rate should not be less than zero")
-    @Max(value = 999999, message = "Pay Rate should not be greater than 999999")
-    @Column(name = "pay_rate")
-    private int payRate;
     @NotBlank(message = "Link to job post or company website cannot be blank")
-    @Size(max = 300, message = "Link cannot exceed 300 characters")
-    @Column(name = "link_to_job_post", length = 300)
+    @URL
+    @Column(name = "link_to_job_post")
     private String linkToJobPost;
     @NotBlank(message = "Application date cannot be blank")
     @Column(name = "application_date")
@@ -36,10 +34,14 @@ public class JobApplication {
     @Enumerated(EnumType.STRING)
     @Column(name = "interview_stage")
     private InterviewStage interviewStage;
-    @Column(name = "received_offer")
-    private boolean receivedOffer;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "offer_status")
+    private OfferStatus offerStatus;
 
     public JobApplication() {
+        this.applicationResponse = JobApplicationResponse.NO_RESPONSE;
+        this.interviewStage = InterviewStage.NO_INTERVIEW;
+        this.offerStatus = OfferStatus.NO;
     }
 
     public long getApplicationId() {
@@ -64,14 +66,6 @@ public class JobApplication {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public int getPayRate() {
-        return payRate;
-    }
-
-    public void setPayRate(int payRate) {
-        this.payRate = payRate;
     }
 
     public String getLinkToJobPost() {
@@ -106,11 +100,11 @@ public class JobApplication {
         this.interviewStage = interviewStage;
     }
 
-    public boolean isReceivedOffer() {
-        return receivedOffer;
+    public OfferStatus getOfferStatus() {
+        return offerStatus;
     }
 
-    public void setReceivedOffer(boolean receivedOffer) {
-        this.receivedOffer = receivedOffer;
+    public void setOfferStatus(OfferStatus offerStatus) {
+        this.offerStatus = offerStatus;
     }
 }

@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="search-header">
+    <input class="search-bar" type="text" placeholder="Search...">
+  </div>
+  <div class="table-header">
+    <h1 class="applications-header">Applications</h1>
+    <div class="btn-wrapper">
+      <button mat-raised-button color="warn" class="delete-btn" (click)="deleteAllJobApplications()">
+        Delete All
+      </button>
+      <button mat-raised-button color="primary" class="add-btn">+ Add</button>
+    </div>
+  </div>
+  <div class="applications-table-wrapper">
+    <table class="applications-table">
+      <thead>
+        <tr>
+          <th>Job Post</th>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Response</th>
+          <th>Interview Stage</th>
+          <th>Offer</th>
+          <th>Date</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="jobApplications$ | async as jobApplications; else loading">
+        <tr *ngFor='let application of jobApplications'>
+          <td id="link-col">
+            <button mat-icon-button (click)="navigateToJobPost(application.linkToJobPost)">
+              <mat-icon color="primary">open_in_new</mat-icon>
+            </button>
+          </td>
+          <td id="company-col">{{ application.company }}</td>
+          <td id="role-col">{{ application.role }}</td>
+          <td>
+            <mat-select [(ngModel)]="application.applicationResponse"
+              (ngModelChange)="onResponseChange(application, $event)">
+              <mat-option *ngFor="let response of applicationResponse | keyvalue" [value]="response.key">
+                {{ response.key.replace('_', ' ') }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td>
+            <mat-select [(ngModel)]="application.interviewStage"
+              (ngModelChange)="onInterviewStageChange(application, $event)">
+              <mat-option *ngFor="let stage of interviewStage | keyvalue" [value]="stage.key">
+                {{ stage.key.replace('_', ' ') }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="offer-status-col">
+            <mat-select [(ngModel)]="application.offerStatus"
+              (ngModelChange)="onOfferStatusChange(application, $event)">
+              <mat-option *ngFor="let status of offerStatus | keyvalue" [value]="status.key">
+                {{ status.key }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td>{{ application.applicationDate }}</td>
+          <td id="edit-col">
+            <button mat-icon-button>
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+          </td>
+          <td id="delete-col">
+            <button mat-icon-button (click)="deleteJobApplication(application.applicationId)">
+              <mat-icon color="warn">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #loading>loading...</ng-template>

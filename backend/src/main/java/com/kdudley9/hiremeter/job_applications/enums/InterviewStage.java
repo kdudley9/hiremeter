@@ -1,11 +1,14 @@
 package com.kdudley9.hiremeter.job_applications.enums;
 
 public enum InterviewStage {
-    PHONE_CALL,
+    NO_INTERVIEW,
+    PHONE_SCREEN,
     ONLINE_ASSESSMENT,
+    BEHAVIORAL,
+    TECHNICAL,
+    PANEL,
     FIRST_ROUND,
     SECOND_ROUND,
-    THIRD_ROUND,
-    FOURTH_ROUND,
+    FINAL,
     DECLINED_INTERVIEW
 }

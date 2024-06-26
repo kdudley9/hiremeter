@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$hiremeter-blue-palette: (
+  50: #e2f1fb,
+  100: #b9dcf6,
+  200: #8dc6f0,
+  300: #61afea,
+  400: #3f9fe7,
+  500: #1a8fe3,
+  600: #1482d6,
+  700: #0a70c3,
+  800: #0360b2,
+  900: #004393,
+  contrast: (50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$hiremeter-red-palette: (
+  50: #ffeaed,
+  100: #ffcbd0,
+  200: #ef9796,
+  300: #e46f6e,
+  400: #ed4e49,
+  500: #f13d2d,
+  600: #e3322d,
+  700: #d12827,
+  800: #c42020,
+  900: #b51113,
+  contrast: (50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$frontend-primary: mat.define-palette($hiremeter-blue-palette);
+$frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$frontend-warn: mat.define-palette($hiremeter-red-palette, 800, 500, 900);
+
+$frontend-theme: mat.define-light-theme((color: (primary: $frontend-primary,
+        accent: $frontend-accent,
+        warn: $frontend-warn,
+      ),
+      typography: (plain-family: 'Poppins'
+      ),
+      density: 0));
+
+@include mat.all-component-themes($frontend-theme);
