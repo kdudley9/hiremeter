@@ -1,10 +1,10 @@
 export interface JobApplication {
-  applicationId: number,
+  applicationId?: number;
   company: string;
   role: string;
   linkToJobPost: string;
   applicationDate: string;
-  applicationResponse: string;
-  interviewStage: string;
-  offerStatus: string;
+  applicationResponse?: string;
+  interviewStage?: string;
+  offerStatus?: string;
 } 

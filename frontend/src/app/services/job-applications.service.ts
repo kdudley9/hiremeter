@@ -22,15 +22,15 @@ export class JobApplicationsService {
     return this.http.put<JobApplication>(`${this.baseUrl}/${id}`, jobApplication);
   }
 
-  updateApplicationResponse(response: ApplicationResponse, id: number): Observable<JobApplication> {
+  updateApplicationResponse(response: ApplicationResponse, id: number | undefined): Observable<JobApplication> {
     return this.http.patch<JobApplication>(`${this.baseUrl}/${id}`, { applicationResponse: response });
   }
 
-  updateInterviewStage(stage: InterviewStage, id: number): Observable<JobApplication> {
+  updateInterviewStage(stage: InterviewStage, id: number | undefined): Observable<JobApplication> {
     return this.http.patch<JobApplication>(`${this.baseUrl}/${id}`, { interviewStage: stage });
   }
 
-  updateOfferStatus(status: OfferStatus, id: number): Observable<JobApplication> {
+  updateOfferStatus(status: OfferStatus, id: number | undefined): Observable<JobApplication> {
     return this.http.patch<JobApplication>(`${this.baseUrl}/${id}`, { offerStatus: status });
   }
 
@@ -42,7 +42,7 @@ export class JobApplicationsService {
     return this.http.get<JobApplication>(`${this.baseUrl}/${id}`);
   }
 
-  deleteJobApplication(id: number): Observable<any> {
+  deleteJobApplication(id: number | undefined): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
