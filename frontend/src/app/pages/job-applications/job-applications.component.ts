@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { JobApplication } from '../../models/JobApplication'
 import { JobApplicationsService } from '../../services/job-applications.service';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { ApplicationResponse } from '../../enums/ApplicationResponse';
 import { InterviewStage } from '../../enums/InterviewStage';
 import { OfferStatus } from '../../enums/OfferStatus';
+import { MatDialog } from '@angular/material/dialog';
+import { AddJobApplicationFormComponent } from '../../components/add-job-application-form/add-job-application-form.component';
 
 @Component({
   selector: 'app-job-applications',
@@ -30,6 +32,7 @@ import { OfferStatus } from '../../enums/OfferStatus';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JobApplicationsComponent implements OnInit {
+  readonly dialog = inject(MatDialog)
   jobApplications$?: Observable<JobApplication[]>;
   applicationResponse = ApplicationResponse;
   interviewStage = InterviewStage;
@@ -53,7 +56,15 @@ export class JobApplicationsComponent implements OnInit {
     this.jobApplicationsService.updateOfferStatus(newOfferStatus, application.applicationId).subscribe();
   }
 
-  deleteJobApplication(id: number): void {
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddJobApplicationFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  deleteJobApplication(id: number | undefined): void {
     this.jobApplicationsService.deleteJobApplication(id).subscribe();
   }
 
