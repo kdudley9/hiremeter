@@ -1,0 +1,27 @@
+.container {
+  color: #373f51;
+  height: 100vh;
+  margin-left: 225px;
+}
+
+.dashboard-header {
+  font-size: 35px;
+  margin-left: 30px;
+}
+
+mat-grid-list {
+  margin: 30px;
+}
+
+mat-grid-tile {
+  font-weight: bold;
+  font-size: 75px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+mat-grid-tile-header {
+  font-size: 15px;
+  background-color: white !important;
+  color: #373f51 !important;
+}
