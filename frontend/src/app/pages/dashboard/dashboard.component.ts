@@ -1,13 +1,14 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 import { Chart, plugins } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [BaseChartDirective, MatGridListModule, CommonModule],
+  imports: [BaseChartDirective, MatGridListModule, CommonModule, MatCardModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -27,19 +28,18 @@ export class DashboardComponent implements OnInit {
     const textCenter = {
       id: 'textCenter',
       beforeDatasetsDraw(chart: any, args: any, pluginOptions: any) {
-        console.log('working');
         const { ctx, data } = chart;
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
         ctx.save();
-        ctx.font = 'bolder 30px sans-serif';
-        ctx.fillStyle = 'black';
+        ctx.font = 'bolder 25px poppins';
+        ctx.fillStyle = '#373f51';
         ctx.textAlign = 'center';
-        ctx.fillText('Value', xCoor, yCoor - 15);
+        ctx.fillText('1325', xCoor, yCoor - 15);
 
-        ctx.font = 'bolder 50px sans-serif';
-        ctx.fillStyle = 'red';
-        ctx.fillText(data.datasets[0].data[0], xCoor, yCoor + 25);
+        ctx.font = '15px poppins';
+        ctx.fillStyle = '#373f51';
+        ctx.fillText('Applications', xCoor, yCoor + 15);
       }
     };
 
@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
 
     this.applicationCountChartOptions = {
       cutout: '75%',
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           display: true,

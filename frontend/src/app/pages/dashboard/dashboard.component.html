@@ -1,29 +1,47 @@
 <div class="container">
   <h1 class="dashboard-header">Dashboard</h1>
-  <mat-grid-list cols="4" rowHeight="45%" gutterSize="30px">
-    <mat-grid-tile class="mat-elevation-z4" colspan="2">
-      <mat-grid-tile-header>
-        Total Applications Sent
-      </mat-grid-tile-header>
-      <div>
-        <canvas *ngIf="isBrowser" baseChart [data]="applicationCountChartData" [options]="applicationCountChartOptions"
-          [type]="'doughnut'" [plugins]="applicationCountChartPlugins"></canvas>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile class="mat-elevation-z4" colspan="2">
-      <mat-grid-tile-header>Applications Sent Over Time</mat-grid-tile-header>
-    </mat-grid-tile>
-    <mat-grid-tile class="mat-elevation-z4">
-      <mat-grid-tile-header>Average Number of Applications Sent Daily</mat-grid-tile-header>
-      3
-    </mat-grid-tile>
-    <mat-grid-tile class="mat-elevation-z4">
-      <mat-grid-tile-header>Offers</mat-grid-tile-header>
-      0
-    </mat-grid-tile>
-    <mat-grid-tile class="mat-elevation-z4">
-      <mat-grid-tile-header>Response Rate</mat-grid-tile-header>
-      2.31%
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="dashboard-content">
+    <mat-card class="dashboard-item-1">
+      <mat-card-header>
+        <h4>Total Applications</h4>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="application-count-chart">
+          <canvas *ngIf="isBrowser" baseChart [data]="applicationCountChartData"
+            [options]="applicationCountChartOptions" [type]="'doughnut'" [plugins]="applicationCountChartPlugins"
+            width="350px"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-2">
+      <mat-card-header>
+        <h4>Applications Timeline</h4>
+      </mat-card-header>
+      <mat-card-content></mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-3 small-card">
+      <mat-card-header>
+        <h4>Applications Sent Today</h4>
+      </mat-card-header>
+      <mat-card-content>5</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-4 small-card">
+      <mat-card-header>
+        <h4>Average Daily Applications</h4>
+      </mat-card-header>
+      <mat-card-content>3</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-5 small-card">
+      <mat-card-header>
+        <h4>Offers</h4>
+      </mat-card-header>
+      <mat-card-content>0</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-6 small-card">
+      <mat-card-header>
+        <h4>Success Rate</h4>
+      </mat-card-header>
+      <mat-card-content>0.01%</mat-card-content>
+    </mat-card>
+  </div>
 </div>
