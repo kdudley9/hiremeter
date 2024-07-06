@@ -17,11 +17,14 @@ export class DashboardComponent implements OnInit {
   applicationCountChartData: any;
   applicationCountChartOptions: any;
   applicationCountChartPlugins: any[] = [];
+  interviewStageDistributionData: any;
+  interviewStageDistributionOptions: any;
   constructor(@Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit(): void {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.createApplicationCountChart();
+    this.createApplicationTimelineChart();
   }
 
   createApplicationCountChart(): void {
@@ -69,6 +72,35 @@ export class DashboardComponent implements OnInit {
         'Accepted',
         'No Response',
         'Rejected'
+      ]
+    };
+  }
+
+  createApplicationTimelineChart(): void {
+    this.interviewStageDistributionOptions = {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+
+    this.interviewStageDistributionData = {
+      datasets: [{
+        data: [15, 25, 32]
+      }],
+
+      labels: [
+        'No Interview',
+        'Declined Interview',
+        'Phone Screen',
+        'Online Assessment',
+        'Behavioral Interview',
+        'Technical Interview',
+        'Panel Interview',
+        'First Round Interview',
+        'Second Round Interview',
+        'Final Interview'
       ]
     };
   }
