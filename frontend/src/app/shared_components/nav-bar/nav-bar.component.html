@@ -1,6 +1,25 @@
-<nav>
-  <img class="logo" src="../assets/images/logo.png" alt="logo">
-  <a routerLink="/applications">Applications</a>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="">Interviews</a>
-</nav>
+<mat-sidenav-container class="nav-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <img class="logo" src="../assets/images/logo.png" alt="logo">
+      <mat-list-item>
+        <a routerLink="/applications" routerLinkActive="active-link" class="nav-link">
+          <mat-icon matListItemIcon>work</mat-icon>
+          <span class="nav-link-text">Applications</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a routerLink="/dashboard" routerLinkActive="active-link" class="nav-link">
+          <mat-icon matListItemIcon>pie_chart</mat-icon>
+          <span class="nav-link-text">Dashboard</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a routerLink="" class="nav-link">
+          <mat-icon matListItemIcon>event</mat-icon>
+          <span class="nav-link-text">Interviews</span>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
