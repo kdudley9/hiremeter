@@ -1,5 +1,8 @@
 package com.kdudley9.hiremeter.job_applications;
 
+import com.kdudley9.hiremeter.job_applications.dtos.DashboardDto;
+import com.kdudley9.hiremeter.job_applications.dtos.JobApplicationDto;
+import com.kdudley9.hiremeter.job_applications.dtos.JobApplicationPartialUpdate;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +29,11 @@ public class JobApplicationController {
   @GetMapping("{id}")
   public ResponseEntity<JobApplicationDto> getJobApplication(@PathVariable Long id) {
     return new ResponseEntity<>(jobApplicationService.getJobApplication(id), HttpStatus.OK);
+  }
+
+  @GetMapping("/dashboard")
+  public ResponseEntity<DashboardDto> getDashboardAnalytics() {
+    return new ResponseEntity<>(jobApplicationService.getDashboardAnalytics(), HttpStatus.OK);
   }
 
   @PostMapping
