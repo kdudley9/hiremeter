@@ -9,12 +9,12 @@
   margin-left: 30px;
 }
 
-.dashboard-item-1 { grid-area: pie-chart; }
-.dashboard-item-2 { grid-area: timeline-chart; }
-.dashboard-item-3 { grid-area: applications-today; }
-.dashboard-item-4 { grid-area: daily-applications; }
-.dashboard-item-5 { grid-area: offers; }
-.dashboard-item-6 { grid-area: success-rate; }
+.dashboard-item-1 { grid-area: applications-today; }
+.dashboard-item-2 { grid-area: daily-applications; }
+.dashboard-item-3 { grid-area: offers; }
+.dashboard-item-4 { grid-area: success-rate; }
+.dashboard-item-5 { grid-area: pie-chart; width: 800px; }
+.dashboard-item-6 { grid-area: timeline-chart; width: 800px; }
 
 .dashboard-content {
   margin-left: 30px;
@@ -22,8 +22,8 @@
   display: grid;
   gap: 25px 25px;
   grid-template-areas:
-    'pie-chart pie-chart timeline-chart timeline-chart'
-    'applications-today daily-applications offers success-rate';
+    'applications-today daily-applications offers success-rate'
+    'pie-chart pie-chart timeline-chart timeline-chart';
 }
 
 mat-card {
