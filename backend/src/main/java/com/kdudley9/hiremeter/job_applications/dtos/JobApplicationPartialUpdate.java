@@ -1,4 +1,4 @@
-package com.kdudley9.hiremeter.job_applications;
+package com.kdudley9.hiremeter.job_applications.dtos;
 
 import com.kdudley9.hiremeter.job_applications.enums.InterviewStage;
 import com.kdudley9.hiremeter.job_applications.enums.JobApplicationResponse;
@@ -10,7 +10,6 @@ public class JobApplicationPartialUpdate {
     private OfferStatus offerStatus;
 
     public JobApplicationPartialUpdate() {
-
     }
 
     public JobApplicationResponse getApplicationResponse() {

@@ -1,7 +1,9 @@
 package com.kdudley9.hiremeter.job_applications;
 
+import com.kdudley9.hiremeter.job_applications.dtos.DashboardDto;
+import com.kdudley9.hiremeter.job_applications.dtos.JobApplicationDto;
+import com.kdudley9.hiremeter.job_applications.dtos.JobApplicationPartialUpdate;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,72 +15,49 @@ import java.util.List;
 @RequestMapping("/api/v1/job-applications")
 @Validated
 public class JobApplicationController {
-    @Autowired
-    private JobApplicationRepository jobApplicationRepository;
+  private final JobApplicationService jobApplicationService;
 
-    @GetMapping
-    public ResponseEntity<List<JobApplication>> getJobApplications() {
-        return new ResponseEntity<>(jobApplicationRepository.findAllByOrderByApplicationIdDesc(), HttpStatus.OK);
-    }
+  public JobApplicationController(JobApplicationService jobApplicationService) {
+    this.jobApplicationService = jobApplicationService;
+  }
 
-    @GetMapping("{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public JobApplication getJobApplication(@PathVariable Long id) {
-        return jobApplicationRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException());
-    }
+  @GetMapping
+  public ResponseEntity<List<JobApplicationDto>> getAllJobApplications() {
+    return new ResponseEntity<>(jobApplicationService.getAllJobApplications(), HttpStatus.OK);
+  }
 
-    @PostMapping
-    public ResponseEntity<JobApplication> jobApplication(@Valid @RequestBody JobApplication jobApplication) {
-        return new ResponseEntity<>(jobApplicationRepository.save(jobApplication), HttpStatus.CREATED);
-    }
+  @GetMapping("{id}")
+  public ResponseEntity<JobApplicationDto> getJobApplication(@PathVariable Long id) {
+    return new ResponseEntity<>(jobApplicationService.getJobApplication(id), HttpStatus.OK);
+  }
 
-    @PutMapping("{id}")
-    public ResponseEntity<JobApplication> updateJobApplication(@Valid @RequestBody JobApplication updateJobApplication, @PathVariable Long id) {
-        return jobApplicationRepository.findById(id)
-                .map(existingJobApplication -> {
-                   existingJobApplication.setApplicationDate(updateJobApplication.getApplicationDate());
-                   existingJobApplication.setApplicationResponse(updateJobApplication.getApplicationResponse());
-                   existingJobApplication.setCompany(updateJobApplication.getCompany());
-                   existingJobApplication.setLinkToJobPost(updateJobApplication.getLinkToJobPost());
-                   existingJobApplication.setRole(updateJobApplication.getRole());
-                   existingJobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
-                   existingJobApplication.setOfferStatus(updateJobApplication.getOfferStatus());
-                   return new ResponseEntity<>(jobApplicationRepository.save(existingJobApplication), HttpStatus.OK);
-                })
-                .orElseGet(() -> {
-                   updateJobApplication.setApplicationId(id);
-                   return new ResponseEntity<>(jobApplicationRepository.save(updateJobApplication), HttpStatus.CREATED);
-                });
-    }
+  @GetMapping("/dashboard")
+  public ResponseEntity<DashboardDto> getDashboardAnalytics() {
+    return new ResponseEntity<>(jobApplicationService.getDashboardAnalytics(), HttpStatus.OK);
+  }
 
-    @PatchMapping("{id}")
-    public ResponseEntity<JobApplication> partialUpdateJobApplication(@RequestBody JobApplicationPartialUpdate updateJobApplication, @PathVariable Long id) {
-        return jobApplicationRepository.findById(id)
-                .map(existingJobApplication -> {
-                    if (updateJobApplication.getApplicationResponse() != null) {
-                        existingJobApplication.setApplicationResponse(updateJobApplication.getApplicationResponse());
-                    }
+  @PostMapping
+  public ResponseEntity<JobApplicationDto> createJobApplication(@Valid @RequestBody JobApplicationDto jobApplication) {
+    return new ResponseEntity<>(jobApplicationService.createJobApplication(jobApplication), HttpStatus.CREATED);
+  }
 
-                    if (updateJobApplication.getInterviewStage() != null) {
-                        existingJobApplication.setInterviewStage(updateJobApplication.getInterviewStage());
-                    }
+  @PutMapping("{id}")
+  public ResponseEntity<JobApplicationDto> updateJobApplication(@Valid @RequestBody JobApplicationDto jobApplication, @PathVariable Long id) {
+    return new ResponseEntity<>(jobApplicationService.updateJobApplication(jobApplication, id), HttpStatus.OK);
+  }
 
-                    if (updateJobApplication.getOfferStatus() != null) {
-                        existingJobApplication.setOfferStatus(updateJobApplication.getOfferStatus());
-                    }
-                    return new ResponseEntity<>(jobApplicationRepository.save(existingJobApplication), HttpStatus.OK);
-                })
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
-    }
+  @PatchMapping("{id}")
+  public ResponseEntity<JobApplicationDto> partialUpdateJobApplication(@RequestBody JobApplicationPartialUpdate jobApplication, @PathVariable Long id) {
+    return new ResponseEntity<>(jobApplicationService.partialUpdateJobApplication(jobApplication, id), HttpStatus.OK);
+  }
 
-    @DeleteMapping
-    public void deleteJobApplications() {
-        jobApplicationRepository.deleteAll();
-    }
+  @DeleteMapping
+  public void deleteJobApplications() {
+    jobApplicationService.deleteAllJobApplications();
+  }
 
-    @DeleteMapping("{id}")
-    public void deleteJobApplication(@PathVariable Long id) {
-        jobApplicationRepository.deleteById(id);
-    }
+  @DeleteMapping("{id}")
+  public void deleteJobApplication(@PathVariable Long id) {
+    jobApplicationService.deleteJobApplication(id);
+  }
 }

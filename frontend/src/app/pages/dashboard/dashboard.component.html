@@ -1,0 +1,52 @@
+<div class="container">
+  <h1 class="dashboard-header">Dashboard</h1>
+  <div class="dashboard-content">
+    <mat-card class="dashboard-item-1 small-card">
+      <mat-card-header>
+        <h4>Applications Sent Today</h4>
+      </mat-card-header>
+      <mat-card-content>5</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-2 small-card">
+      <mat-card-header>
+        <h4>Average Daily Applications</h4>
+      </mat-card-header>
+      <mat-card-content>3</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-3 small-card">
+      <mat-card-header>
+        <h4>Offers</h4>
+      </mat-card-header>
+      <mat-card-content>0</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-4 small-card">
+      <mat-card-header>
+        <h4>Success Rate</h4>
+      </mat-card-header>
+      <mat-card-content>0.01%</mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-5">
+      <mat-card-header>
+        <h4>Total Applications</h4>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="application-count-chart">
+          <canvas *ngIf="isBrowser" baseChart [data]="applicationCountChartData"
+            [options]="applicationCountChartOptions" [type]="'doughnut'" [plugins]="applicationCountChartPlugins"
+            width="350px"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item-6">
+      <mat-card-header>
+        <h4>Interview Stage Distribution</h4>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="interview-stage-chart">
+          <canvas *ngIf="isBrowser" baseChart [data]="interviewStageDistributionData"
+            [options]="interviewStageDistributionOptions" [type]="'bar'"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

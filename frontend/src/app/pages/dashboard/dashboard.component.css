@@ -1,0 +1,54 @@
+.container {
+  color: #373f51;
+  height: 100vh;
+  margin-left: 225px;
+}
+
+.dashboard-header {
+  font-size: 35px;
+  margin-left: 30px;
+}
+
+.dashboard-item-1 { grid-area: applications-today; }
+.dashboard-item-2 { grid-area: daily-applications; }
+.dashboard-item-3 { grid-area: offers; }
+.dashboard-item-4 { grid-area: success-rate; }
+.dashboard-item-5 { grid-area: pie-chart; width: 800px; }
+.dashboard-item-6 { grid-area: timeline-chart; width: 800px; }
+
+.dashboard-content {
+  margin-left: 30px;
+  margin-right: 30px;
+  display: grid;
+  gap: 25px 25px;
+  grid-template-areas:
+    'applications-today daily-applications offers success-rate'
+    'pie-chart pie-chart timeline-chart timeline-chart';
+}
+
+mat-card {
+  border: 1px solid #d3d3d3;
+}
+
+.small-card {
+  text-align: center;
+  height: 200px;
+}
+
+.small-card mat-card-content {
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 100px;
+}
+
+mat-card-header {
+  height: 45px;
+  padding: 0 0 0 16px;
+  font-size: 15px;
+}
+
+.application-count-chart canvas {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
