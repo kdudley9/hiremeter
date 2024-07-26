@@ -60,43 +60,6 @@ button {
   margin-right: 15px;
 }
 
-.applications-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-
-.applications-table th,
-.applications-table td {
-  padding: 10px 15px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-}
-
 mat-option {
   font-size: 15px;
-}
-
-#company-col {
-  width: 15%;
-}
-
-#role-col {
-  width: 15%;
-}
-
-#link-col {
-  width: 10%;
-}
-
-#offer-status-col {
-  width: 15%;
-}
-
-#edit-col {
-  width: 5%;
-}
-
-#delete-col {
-  width: 5%;
 }

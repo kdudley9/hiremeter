@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, ViewChild } from '@angular/core';
 import { JobApplication } from '../../models/JobApplication'
 import { JobApplicationsService } from '../../services/job-applications.service';
 import { CommonModule } from '@angular/common';
@@ -6,7 +6,8 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button'
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { MatTable, MatTableModule } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ApplicationResponse } from '../../enums/ApplicationResponse';
@@ -25,7 +26,8 @@ import { AddJobApplicationFormComponent } from '../../components/add-job-applica
     MatButtonModule,
     RouterModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   templateUrl: './job-applications.component.html',
   styleUrl: './job-applications.component.css',
@@ -33,15 +35,22 @@ import { AddJobApplicationFormComponent } from '../../components/add-job-applica
 })
 export class JobApplicationsComponent implements OnInit {
   readonly dialog = inject(MatDialog)
-  jobApplications$?: Observable<JobApplication[]>;
+  jobApplications: JobApplication[] = [];
   applicationResponse = ApplicationResponse;
   interviewStage = InterviewStage;
   offerStatus = OfferStatus;
+  displayedColumns: string[] = ['job-post', 'company', 'role', 'response', 'stage', 'offer', 'date', 'edit', 'delete'];
 
   constructor(private jobApplicationsService: JobApplicationsService) { }
 
   ngOnInit(): void {
-    this.jobApplications$ = this.jobApplicationsService.getAllJobApplications();
+    this.getAllJobapplications();
+  }
+
+  getAllJobapplications(): void {
+    this.jobApplicationsService.getAllJobApplications().subscribe((data) => {
+      this.jobApplications = data;
+    });
   }
 
   onResponseChange(application: JobApplication, newResponse: ApplicationResponse): void {
