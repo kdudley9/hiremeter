@@ -1,11 +1,11 @@
-package com.kdudley9.hiremeter.job_applications;
+package com.kdudley9.hiremeter.job_applications.dtos;
 
 import com.kdudley9.hiremeter.job_applications.enums.InterviewStage;
 import com.kdudley9.hiremeter.job_applications.enums.JobApplicationResponse;
 import com.kdudley9.hiremeter.job_applications.enums.OfferStatus;
 
 public class JobApplicationDto {
-  private long applicationId;
+  private Long applicationId;
   private String company;
   private String role;
   private String linkToJobPost;
@@ -20,11 +20,11 @@ public class JobApplicationDto {
     this.offerStatus = OfferStatus.NO;
   }
 
-  public long getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(long applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
